@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Семестровая работа - Контакты</title>
+    <link rel="stylesheet" href="../style/styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <header class="header">
+            <h1>Контакты</h1>
+        </header>
+        
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
+                <li class="nav-item"><a class="nav-link" href="news.html">Новости</a></li>
+                <li class="nav-item"><a class="nav-link" href="practices.html">Практики</a></li>
+                <li class="nav-item"><a class="nav-link" href="goods.html">Товары</a></li>
+                <li class="nav-item"><a class="nav-link active" href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        
+        <main class="content">
+            <section class="contacts-section fade-in-up">
+                <h2 class="section-title">Контактная информация</h2>
+                
+                <div class="contact-grid">
+                    <article class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <h3>Электронная почта</h3>
+                        <p><a href="mailto:example@university.ru">example@university.ru</a></p>
+                    </article>
+
+                    <article class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <h3>Телефон</h3>
+                        <p>+7 (999) 123-45-67</p>
+                        <button class="contact-button" onclick="openContactModal()">Позвоните мне</button>
+                    </article>
+
+                    <article class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <h3>Адрес</h3>
+                        <p>г. Москва, ул. Примерная, д. 123</p>
+                        <p>Индекс: 123456</p>
+                    </article>
+                </div>
+
+                <article class="contact-item-1">
+                    <div class="contact-icon">⏰</div>
+                    <h3>График работы</h3>
+                    <p>Пн-Пт: 9:00 - 9:15</p>
+                    <p>Сб: 10:00 - 1:00</p>
+                    <p>Вс: выходной</p>
+                </article>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 Долбаная работа. Все права защищены.</p>
+                <p>Контактная информация: example@university.ru</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Модальное окно для формы обратной связи -->
+    <dialog id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Форма обратной связи</h2>
+                <button class="modal-close" onclick="closeContactModal()">×</button>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Имя *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Телефон *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Электронная почта *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category">Категория обращения</label>
+                    <select id="category" name="category">
+                        <option value="general">Общий вопрос</option>
+                        <option value="technical">Техническая поддержка</option>
+                        <option value="commercial">Коммерческое предложение</option>
+                        <option value="cooperation">Сотрудничество</option>
+                        <option value="other">Другое</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Текст обращения *</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeContactModal()">Закрыть</button>
+                    <button type="submit" class="btn-primary">Отправить</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <script>
+        // Функции для работы с модальным окном
+        function openContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.showModal();
+            // Предотвращаем скролл body когда модальное окно открыто
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.close();
+            // Возвращаем скролл body когда модальное окно закрыто
+            document.body.style.overflow = '';
+        }
+
+        // Обработка отправки формы
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Здесь можно добавить отправку данных на сервер
+            alert('Спасибо! Ваше обращение отправлено. Мы свяжемся с вами в ближайшее время.');
+            closeContactModal();
+            this.reset();
+        });
+
+        // Закрытие модального окна при клике вне его области
+        document.getElementById('contactModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeContactModal();
+            }
+        });
+
+        // Закрытие модального окна при нажатии ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeContactModal();
+            }
+        });
+    </script>
+</body>
+</html>
