@@ -4,4 +4,4 @@
 Этот репозиторий является представлением работы для 7-8 практической работы.
 
 ## Ссылки
-- [Публичная страница на GitHub Pages](https://squzmen.github.io/Control1/index.html)
+- [Публичная страница на GitHub Pages](https://squzmen.github.io/Control1.1/index.html)
